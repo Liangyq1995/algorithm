@@ -4,7 +4,7 @@ import collections
 from collections import defaultdict, deque
 from typing import List, Optional
 
-from algorithm.common.nodes import ConnectNode, ListNode, TreeNode
+from common.nodes import ConnectNode, ListNode, TreeNode
 
 WHITE, GRAY = 0, 1
 

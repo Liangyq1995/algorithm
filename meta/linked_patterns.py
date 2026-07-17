@@ -533,38 +533,6 @@ PROBLEMS = {
         ],
         complexity='时间 O(n²)，空间 O(1)。',
     ),
-    'data_structures/linked_list/linked_list.py::merge': _m(
-        '88', '合并两个有序数组',
-        '给你两个按非递减顺序排列的整数数组 nums1 和 nums2，'
-        '另有两个整数 m 和 n，分别表示 nums1 和 nums2 中元素的数目。\n\n'
-        'nums1 的末尾有足够空间（大小为 m+n）存放 nums2 的元素。'
-        '请你合并 nums2 到 nums1 中，使合并后的数组仍按非递减顺序排列。'
-        '必须原地修改 nums1，不使用额外数组。\n\n'
-        '约束：nums1.length == m + n；nums2.length == n；0 ≤ m, n ≤ 200；'
-        '1 ≤ m + n ≤ 200；-10⁹ ≤ nums1[i], nums2[j] ≤ 10⁹。',
-        [
-            '示例 1：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3 → [1,2,2,3,5,6]',
-            '示例 2：nums1 = [1], m = 1, nums2 = [], n = 0 → [1]',
-            '示例 3：nums1 = [0], m = 0, nums2 = [1], n = 1 → [1]',
-        ],
-        [
-            '从 nums1 末尾空位 pos = m+n-1 开始向前填。',
-            '比较 nums1[m-1] 与 nums2[n-1]，较大者写入 pos，对应指针前移。',
-            'm 或 n 为 0 时只处理另一方剩余元素。',
-            'nums2 若有剩余，拷贝到 nums1 前部；nums1 剩余部分已在正确位置。',
-        ],
-        '链表',
-        code_notes=[
-            'pos = m + n - 1 — 写入位置，从尾部空位开始。',
-            'while m > 0 and n > 0 — 两数组均还有未合并元素。',
-            'if nums1[m - 1] < nums2[n - 1] — 取较大者 nums2[n-1]。',
-            'nums1[pos] = nums2[n - 1]; n -= 1 — 写入并前移 n。',
-            'else: nums1[pos] = nums1[m - 1]; m -= 1 — 写入 nums1 较大者。',
-            'pos -= 1 — 写入位置左移。',
-            'while n > 0 — 拷贝 nums2 剩余元素。',
-        ],
-        complexity='时间 O(m+n)，空间 O(1)。',
-    ),
     'data_structures/matrix/matrix.py::search_matrix': _m(
         '240', '搜索二维矩阵 II',
         '编写一个高效的算法来搜索 m×n 矩阵 matrix 中的一个目标值 target。'

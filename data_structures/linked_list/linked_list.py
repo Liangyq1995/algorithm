@@ -3,7 +3,7 @@
 from functools import reduce
 from typing import Optional
 
-from algorithm.common.nodes import ListNode, RandomListNode
+from common.nodes import ListNode, RandomListNode
 
 
 def remove_elements(head: Optional[ListNode], val: int) -> Optional[ListNode]:
@@ -261,23 +261,6 @@ def insertion_sort_list(head: Optional[ListNode]) -> Optional[ListNode]:
         prev.next = head
         head = nxt
     return dummy.next
-
-
-def merge(nums1: list[int], m: int, nums2: list[int], n: int) -> None:
-    """88. 合并两个有序数组（原地）"""
-    pos = m + n - 1
-    while m > 0 and n > 0:
-        if nums1[m - 1] < nums2[n - 1]:
-            nums1[pos] = nums2[n - 1]
-            n -= 1
-        else:
-            nums1[pos] = nums1[m - 1]
-            m -= 1
-        pos -= 1
-    while n > 0:
-        nums1[pos] = nums2[n - 1]
-        n -= 1
-        pos -= 1
 
 
 def reverse_k_group(head: Optional[ListNode], k: int) -> Optional[ListNode]:

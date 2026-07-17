@@ -164,15 +164,6 @@ def repeated_string_match(a: str, b: str) -> int:
     return -1
 
 
-def is_subsequence(sub: str, main: str) -> bool:
-    """392. 判断子序列"""
-    i = 0
-    for ch in main:
-        if i < len(sub) and sub[i] == ch:
-            i += 1
-    return i == len(sub)
-
-
 def my_atoi(s: str) -> int:
     """8. 字符串转换整数 (atoi)"""
     i = 0

@@ -921,7 +921,7 @@ PROBLEMS = {
         ],
         '回溯',
         code_notes=[
-            'from algorithm.data_structures.trie.trie import Trie — 前缀树。',
+            'from data_structures.trie.trie import Trie — 前缀树。',
             'for word in words: trie.insert(word) — 批量插入词典。',
             'def dfs(r, c, node, path) — 网格 DFS 沿 Trie 走。',
             'if ch not in node.children: return — 前缀不匹配剪枝。',

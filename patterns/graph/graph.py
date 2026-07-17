@@ -3,7 +3,7 @@
 from collections import deque
 from typing import Optional
 
-from algorithm.common.nodes import GraphNode
+from common.nodes import GraphNode
 
 
 def num_islands(grid: list[list[str]]) -> int:

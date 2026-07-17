@@ -1,6 +1,6 @@
 """KMP 与重复子串。"""
 
-from algorithm.common.kmp import build_next
+from common.kmp import build_next
 
 
 def is_match(s: str, p: str) -> bool:

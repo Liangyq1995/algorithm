@@ -897,39 +897,6 @@ PROBLEMS = {
         ],
         complexity='时间 O(n²)，空间 O(n)。',
     ),
-    'strings/operations.py::is_subsequence': _m(
-        '392', '判断子序列',
-        '给定字符串 sub 和 main，'
-        '判断 sub 是否为 main 的子序列。\n\n'
-        '子序列不要求连续，'
-        '但相对顺序须与 sub 一致；'
-        '空字符串是任意字符串的子序列。\n\n'
-        '约束：0 ≤ sub.length, main.length ≤ 10⁴；'
-        'sub 和 main 仅由小写英文字母组成。',
-        [
-            '示例 1：sub = "abc", main = "ahbgdc" → true。',
-            '示例 2：sub = "axc", main = "ahbgdc" → false。'
-            'c 在 b 之前出现，顺序不对。',
-            '示例 3：sub = "", main = "abc" → true。'
-            '空串是子序列。',
-        ],
-        [
-            '双指针 i 指向 sub，遍历 main 每个字符 ch。',
-            '若 i < len(sub) 且 sub[i] == ch，i += 1 匹配成功。',
-            '遍历结束检查 i == len(sub)，全部匹配则为子序列。',
-        ],
-        '字符串',
-        code_notes=[
-            'i = 0 — sub 的匹配指针，初始未匹配任何字符。',
-            'for ch in main — 只需单向扫描 main，O(len(main))。',
-            'if i < len(sub) and sub[i] == ch: i += 1 — 贪心匹配，不回头。',
-            'return i == len(sub) — 指针走完 sub 则成功。',
-            '参数顺序 (sub, main) 与函数签名一致。',
-            '双指针 O(n) 优于 DP O(mn)；follow-up 多次查询可预处理 main。',
-            'sequence_dp.py 另有同名函数，参数名为 (s, t)。',
-        ],
-        complexity='时间 O(len(main))，空间 O(1)。',
-    ),
     'strings/pattern_matching.py::is_match': _m(
         '10', '正则表达式匹配',
         '给你一个字符串 s 和一个字符规律 p，'

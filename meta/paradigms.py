@@ -1,7 +1,7 @@
 from meta.helpers import _m
 
 PROBLEMS = {
-    'paradigms/backtracking/backtracking.py::combine': _m(
+    'paradigms/backtracking/core.py::combine': _m(
         "77",
         "组合",
         "给定两个整数 n 和 k，返回 1…n 中所有可能的 k 个数的组合。\n\n组合中元素按升序排列，[1,2] 与 [2,1] 视为同一组合。可使用回溯枚举所有合法选取方案。\n\n约束：1 ≤ k ≤ n ≤ 20。",
@@ -27,7 +27,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(C(n,k)·k)，空间 O(k)。",
     ),
-    'paradigms/backtracking/backtracking.py::generate_parenthesis': _m(
+    'paradigms/backtracking/core.py::generate_parenthesis': _m(
         "22",
         "括号生成",
         "数字 n 代表生成括号的对数，设计函数生成所有可能且有效的括号组合。\n\n有效指每个左括号都有对应右括号，且任意前缀中左括号数不少于右括号数。\n\n约束：1 ≤ n ≤ 8。",
@@ -53,7 +53,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(4^n/√n)，空间 O(n)。",
     ),
-    'paradigms/backtracking/backtracking.py::letter_combinations': _m(
+    'paradigms/backtracking/core.py::letter_combinations': _m(
         "17",
         "电话号码的字母组合",
         "给定仅含数字 2-9 的字符串 digits，返回所有它能表示的字母组合。\n\n映射与电话按键相同；1 不对应任何字母。空串返回空列表。\n\n约束：0 ≤ len(digits) ≤ 4。",
@@ -80,7 +80,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(4^n·n)，空间 O(n)，n=len(digits)。",
     ),
-    'paradigms/backtracking/backtracking.py::combinationSum3': _m(
+    'paradigms/backtracking/core.py::combination_sum3': _m(
         "216",
         "组合总和 III",
         "找出所有相加之和为 n 的 k 个数的组合，只使用 1 到 9 的数字，每个数字最多使用一次。\n\n返回所有有效组合列表，不可含重复组合，顺序不限。\n\n约束：1 ≤ k ≤ 9，1 ≤ n ≤ 60。",
@@ -106,7 +106,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(C(9,k)·k)，空间 O(k)。",
     ),
-    'paradigms/backtracking/backtracking.py::combinationSum': _m(
+    'paradigms/backtracking/core.py::combination_sum': _m(
         "39",
         "组合总和",
         "给定无重复元素的整数数组 candidates 和目标 target，找出 candidates 中数字和为 target 的所有不同组合。\n\ncandidates 中同一数字可无限重复选取；至少选数数量不同视为不同组合。\n\n约束：1 ≤ len(candidates) ≤ 30，2 ≤ target ≤ 40，保证解少于 150 个。",
@@ -132,7 +132,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(N^(T/min)) 量级，空间 O(target)。",
     ),
-    'paradigms/backtracking/backtracking.py::combinationSum2': _m(
+    'paradigms/backtracking/core.py::combination_sum2': _m(
         "40",
         "组合总和 II",
         "给定候选人编号集合 candidates（含重复）和目标 target，找出和为 target 的所有组合；每个数字在每个组合中最多用一次。\n\n解集不能包含重复组合。\n\n约束：1 ≤ len(candidates) ≤ 100，1 ≤ target ≤ 500。",
@@ -157,7 +157,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(2^n)，空间 O(n)。",
     ),
-    'paradigms/backtracking/backtracking.py::subsets': _m(
+    'paradigms/backtracking/core.py::subsets': _m(
         "78",
         "子集",
         "给定不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。\n\n解集不能包含重复子集，返回顺序不限。\n\n约束：1 ≤ len(nums) ≤ 10，-10 ≤ nums[i] ≤ 10。",
@@ -182,7 +182,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(n·2^n)，空间 O(n)。",
     ),
-    'paradigms/backtracking/backtracking.py::subsets_with_dup': _m(
+    'paradigms/backtracking/core.py::subsets_with_dup': _m(
         "90",
         "子集 II",
         "给定可能含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。解集不能包含重复子集。\n\n约束：1 ≤ len(nums) ≤ 10，-10 ≤ nums[i] ≤ 10。",
@@ -206,7 +206,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(n·2^n)，空间 O(n)。",
     ),
-    'paradigms/backtracking/backtracking.py::restore_ip_addresses': _m(
+    'paradigms/backtracking/core.py::restore_ip_addresses': _m(
         "93",
         "复原 IP 地址",
         "给定只含数字的字符串 s，复原并返回所有可能的有效 IP 地址格式。\n\n有效 IP 由四个 0-255 的整数组成，用 '.' 分隔，且每段不能有前导零（除非该段就是 \"0\"）。\n\n约束：1 ≤ len(s) ≤ 20。",
@@ -232,33 +232,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(1)（相对 n 为常数段数），空间 O(1) 栈。",
     ),
-    'paradigms/backtracking/backtracking.py::is_valid': _m(
-        "93",
-        "IP 段合法性校验",
-        "判断字符串 s 的闭区间 [start, end] 是否为合法 IP 地址段。\n\n合法条件：非空；无多余前导零（\"0\" 单独合法，\"01\" 不合法）；全部为数字；数值在 0-255 之间。\n\n本函数为 restore_ip_addresses 的辅助校验。",
-        [
-            "示例 1：s = \"255\", start = 0, end = 2 → True",
-            "示例 2：s = \"256\", start = 0, end = 2 → False",
-            "示例 3：s = \"01\", start = 0, end = 1 → False（前导零）",
-        ],
-        [
-            "若 start > end 返回 False。",
-            "若 s[start]=='0' 且 start!=end，有前导零，返回 False。",
-            "遍历 start..end 累加 num=num*10+int(s[i])，遇非数字或 num>255 返回 False。",
-            "全部通过返回 True。",
-        ],
-        "回溯",
-        code_notes=[
-            "start!=end 时 '0' 开头非法，单独 '0' 合法。",
-            "逐字符累加 num 而非 int(slice)，便于中途截断超 255。",
-            "isdigit() 检查非数字字符。",
-            "end  inclusive，与切片 s[start:end+1] 一致。",
-            "被 restore_ip_addresses 在每段切分时调用。",
-            "时间 O(段长) ≤ O(3)。",
-        ],
-        complexity="时间 O(1)（段长至多 3），空间 O(1)。",
-    ),
-    'paradigms/backtracking/backtracking.py::partition': _m(
+    'paradigms/backtracking/core.py::partition': _m(
         "131",
         "分割回文串",
         "给定字符串 s，将 s 分割成若干子串，使每个子串都是回文串，返回 s 的所有可能分割方案。\n\n约束：1 ≤ len(s) ≤ 16。",
@@ -283,7 +257,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(n·2^n)，空间 O(n)。",
     ),
-    'paradigms/backtracking/backtracking.py::find_sub_sequences': _m(
+    'paradigms/backtracking/core.py::find_sub_sequences': _m(
         "491",
         "递增子序列",
         "给定整数数组 nums，找出并返回所有不同的递增子序列，递增子序列至少包含两个元素。\n\n数组可能含重复元素，出现相等整数也可视为递增的一种情况。顺序不限。\n\n约束：1 ≤ len(nums) ≤ 15，-100 ≤ nums[i] ≤ 100。",
@@ -309,7 +283,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(2^n)，空间 O(n)。",
     ),
-    'paradigms/backtracking/backtracking.py::permute': _m(
+    'paradigms/backtracking/core.py::permute': _m(
         "46",
         "全排列",
         "给定不含重复数字的数组 nums，返回其所有可能的全排列，顺序不限。\n\n约束：1 ≤ len(nums) ≤ 6，-10 ≤ nums[i] ≤ 10。",
@@ -334,7 +308,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(n·n!)，空间 O(n)。",
     ),
-    'paradigms/backtracking/backtracking.py::permute_unique': _m(
+    'paradigms/backtracking/core.py::permute_unique': _m(
         "47",
         "全排列 II",
         "给定可含重复数字的序列 nums，按任意顺序返回所有不重复的全排列。\n\n约束：1 ≤ len(nums) ≤ 8，-10 ≤ nums[i] ≤ 10。",
@@ -360,7 +334,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(n·n!)，空间 O(n)。",
     ),
-    'paradigms/backtracking/backtracking.py::word_search_exist': _m(
+    'paradigms/backtracking/core.py::word_search_exist': _m(
         "79",
         "单词搜索",
         "给定 m×n 二维字符网格 board 和字符串 word，若 word 存在于网格中返回 true，否则 false。\n\n单词必须按字母顺序通过相邻（水平或垂直）单元格构成，同一单元格不能重复使用。\n\n约束：1 ≤ m,n ≤ 6，1 ≤ len(word) ≤ 15。",
@@ -387,7 +361,7 @@ PROBLEMS = {
         ],
         complexity="时间 O(m·n·4^L)，空间 O(L)。",
     ),
-    'paradigms/backtracking/backtracking.py::make_square': _m(
+    'paradigms/backtracking/core.py::make_square': _m(
         "473",
         "火柴拼正方形",
         "给定整数数组 matchsticks（每根火柴长度），能否用全部火柴拼成一个正方形。不能折断火柴，每根必须使用一次。\n\n约束：1 ≤ len(matchsticks) ≤ 15，1 ≤ matchsticks[i] ≤ 10^8。",

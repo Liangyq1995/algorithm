@@ -17,7 +17,7 @@ SKIP_FILES = {"__init__.py", "generate_catalog.py", "catalog_meta.py"}
 SKIP_PREFIX = "_"
 DESIGN_CLASSES = {"MonotonicQueue", "QueueUsingStack", "StackUsingQueue", "MinStack", "LRUCache", "Trie", "MedianFinder", "Codec"}
 SKIP_CLASSES = {"ListNode", "TreeNode", "GraphNode", "RandomListNode", "ConnectNode"}
-PLAIN_METHOD_CLASSES = {"BackTracking"}
+PLAIN_METHOD_CLASSES: set[str] = set()
 
 PY_KEYWORDS = {
     "and", "as", "assert", "async", "await", "break", "class", "continue", "def",
@@ -210,7 +210,7 @@ def render_card(item: dict, cat_id: str) -> str:
         complexity_html = f'<div class="complexity">复杂度：{html.escape(item["complexity"])}</div>'
 
     return f"""
-        <article class="card" id="{anchor}" data-title="{html.escape(item['title'].lower())}" data-lc="{html.escape(item['lc_no'])}">
+        <article class="card" id="{anchor}" data-title="{html.escape(item['title'].lower())}" data-lc="{html.escape(item['lc_no'])}" data-fn="{html.escape(item['name'].lower())}">
           <header class="card-header">
             <div class="title-row">
               <h3>{html.escape(item['title'])}</h3>
@@ -227,14 +227,14 @@ def render_card(item: dict, cat_id: str) -> str:
           </div>
           {examples_html}
           {approach_html}
-          <div class="panel panel-code">
-            <div class="panel-head"><span class="panel-icon">🐍</span><h4>Python 实现</h4></div>
+          <details class="panel panel-code">
+            <summary class="panel-head"><span class="panel-icon">🐍</span><h4>Python 实现</h4><span class="toggle-hint">点击展开</span></summary>
             <div class="panel-body">
               {render_code_block(item['code'])}
               {code_notes_html}
               {complexity_html}
             </div>
-          </div>
+          </details>
         </article>"""
 
 
@@ -612,6 +612,21 @@ def build_html(all_items: list[dict]) -> str:
       border-radius: 6px;
       border-left: 3px solid var(--accent);
     }}
+    details.panel-code > summary {{
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }}
+    details.panel-code > summary::-webkit-details-marker {{ display: none; }}
+    details.panel-code > summary .toggle-hint {{
+      margin-left: auto;
+      font-size: .75rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: none;
+      letter-spacing: 0;
+    }}
+    details.panel-code[open] > summary .toggle-hint {{ display: none; }}
     .muted {{ color: var(--muted); font-size: .9rem; }}
     .no-result {{
       display: none;
@@ -636,7 +651,7 @@ def build_html(all_items: list[dict]) -> str:
     <main>
       <div class="hero">
         <h2>算法题目与解法</h2>
-        <p>每题包含完整<strong>题目描述</strong>、示例、分步<strong>解题思路</strong>，以及带<strong>代码说明</strong>的 Python 实现。</p>
+        <p>每题包含完整<strong>题目描述</strong>、示例、分步<strong>解题思路</strong>，以及带<strong>代码说明</strong>的 Python 实现（默认折叠）。</p>
       </div>
       <div id="no-result" class="no-result">未找到匹配题目，请换个关键词试试。</div>
       {''.join(body_parts)}
@@ -650,7 +665,12 @@ def build_html(all_items: list[dict]) -> str:
       const q = search.value.trim().toLowerCase();
       let visible = 0;
       cards.forEach(card => {{
-        const match = !q || card.innerText.toLowerCase().includes(q);
+        const hay = [
+          card.dataset.title || '',
+          card.dataset.lc || '',
+          card.dataset.fn || '',
+        ].join(' ');
+        const match = !q || hay.includes(q);
         card.classList.toggle('hidden', !match);
         if (match) visible++;
       }});
