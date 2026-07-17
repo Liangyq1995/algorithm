@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithm 题目手册</title>
+  <link rel="stylesheet" href="./catalog.css">
+</head>
+<body>
+  <div class="layout">
+    <nav>
+      <h1>Algorithm 手册</h1>
+      <div class="sub">共 {{TOTAL}} 题 · 更新于 {{GENERATED}}</div>
+      {{NAV}}
+    </nav>
+    <main>
+      <div class="hero">
+        <h2>算法题目与解法</h2>
+        <p>默认紧凑列表，点击卡片展开<strong>题面 / 思路</strong>；详情与代码按需加载。可用左侧搜索与难度筛选。</p>
+      </div>
+      <div id="no-result" class="no-result">未找到匹配题目，请换个关键词试试。</div>
+      {{SECTIONS}}
+    </main>
+  </div>
+  <script src="./problems-data.js"></script>
+  <script src="./catalog.js"></script>
+</body>
+</html>
